@@ -9,12 +9,26 @@ Our Laravel-based point of sale (POS) app is a cutting-edge solution that simpli
 -   database: Sqlite, MySQL, or PostgreSQL
 -   web browser
 -   code editor
+-   git
 
 ## Installation
 
 ### Composer and PHP
 
+-   git clone https://github.com/6hislain/point-of-sale-laravel
+-   cd point-of-sale-laravel
+-   composer install
+-   php artisan key:generate
+-   rename _.env.example_ to _.env_
+-   edit _.env_ to connect with your local database
+-   php artisan migrate
+-   php artisan serve
+
 ### Docker
+
+reference https://mosesejim.hashnode.dev/how-to-host-your-laravel-app-on-render
+
+## TODO
 
 ### Database Tables
 

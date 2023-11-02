@@ -15,7 +15,12 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('quantity');
+            $table->enum('type', ['purchase', 'sale', 'expired'])->default('sale');
+            $table->integer('group')->nullable();
+            $table->text('description')->nullable();
+            $table->softDeletes();
+            $table->timestamps(); // ! user, store, client, product relation
         });
     }
 
