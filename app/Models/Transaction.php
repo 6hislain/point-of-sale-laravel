@@ -18,19 +18,27 @@ class Transaction extends Model
         'description',
     ];
 
-    public function user(): BelongsTo {
+    protected $casts = [
+        'expiration_date' => 'date',
+    ];
+
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function product(): BelongsTo {
+    public function product(): BelongsTo
+    {
         return $this->belongsTo(Product::class);
     }
-    
-    public function client(): BelongsTo {
+
+    public function client(): BelongsTo
+    {
         return $this->belongsTo(Client::class);
     }
 
-    public function store(): BelongsTo {
+    public function store(): BelongsTo
+    {
         return $this->belongsTo(Store::class);
     }
 }

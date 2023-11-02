@@ -16,16 +16,19 @@ class Category extends Model
         'image',
         'description',
     ];
-    
-    public function user(): BelongsTo {
+
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function store(): BelongsTo {
+    public function store(): BelongsTo
+    {
         return $this->belongsTo(Store::class);
     }
 
-    public function products(): HasMany {
+    public function products(): HasMany
+    {
         return $this->hasMany(Product::class);
     }
 }

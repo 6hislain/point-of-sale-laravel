@@ -32,9 +32,9 @@ reference https://mosesejim.hashnode.dev/how-to-host-your-laravel-app-on-render
 
 ### Database Tables
 
--   [*] User
--   [*] Store
--   [*] Category
--   [*] Product
--   [*] Client
--   [*] Transaction
+-   [x] User
+-   [x] Store
+-   [x] Category
+-   [x] Product
+-   [x] Client
+-   [x] Transaction

@@ -18,19 +18,23 @@ class Store extends Model
         'description',
     ];
 
-    public function user(): BelongsTo {
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function clients(): HasMany {
+    public function clients(): HasMany
+    {
         return $this->hasMany(Client::class);
     }
 
-    public function categories(): HasMany {
+    public function categories(): HasMany
+    {
         return $this->hasMany(Category::class);
     }
 
-    public function products(): HasMany {
+    public function products(): HasMany
+    {
         return $this->hasMany(Product::class);
     }
 }

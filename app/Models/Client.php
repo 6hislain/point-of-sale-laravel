@@ -18,15 +18,18 @@ class Client extends Model
         'description',
     ];
 
-    public function user(): BelongsTo {
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function store(): BelongsTo {
+    public function store(): BelongsTo
+    {
         return $this->belongsTo(Store::class);
     }
 
-    public function transactions(): HasMany {
+    public function transactions(): HasMany
+    {
         return $this->hasMany(Transaction::class);
     }
 }
