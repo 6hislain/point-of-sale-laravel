@@ -1,4 +1,4 @@
 @extends('layouts.default')
 @section('content')
-<h1>login</h1>
+<h1>Welcome</h1>
 @endsection

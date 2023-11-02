@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StoreController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +19,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->name('home'); // ! move to DefaultController
+
+
+Route::resources([
+    'category' => CategoryController::class,
+    'client' => ClientController::class,
+    'product' => ProductController::class,
+    'store' => StoreController::class,
+    'transaction' => TransactionController::class,
+]);
