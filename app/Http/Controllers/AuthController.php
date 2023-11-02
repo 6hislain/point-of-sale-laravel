@@ -12,20 +12,15 @@ class AuthController extends Controller
 { // ! reset password, remember on login
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest')->except(['logout']);
     }
 
-    public function login()
+    public function showLogin()
     {
         return view('auth.login');
     }
 
-    public function register()
-    {
-        return view('auth.register');
-    }
-
-    public function authenticate(Request $request): RedirectResponse
+    public function login(Request $request): RedirectResponse
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
@@ -40,7 +35,12 @@ class AuthController extends Controller
         return back()->withErrors(['email' => 'The provided credentials do not match our records.'])->onlyInput('email');
     }
 
-    public function createAccount(Request $request): RedirectResponse
+    public function showRegister()
+    {
+        return view('auth.register');
+    }
+
+    public function register(Request $request): RedirectResponse
     {
         $credentials = $request->validate([
             'name' => ['required', 'min:3', 'max:50'],
@@ -49,7 +49,8 @@ class AuthController extends Controller
         ]);
 
         User::create([
-            ...$request->only(['name', 'email']),
+            'name' => $request['name'],
+            'email' => $request['email'],
             'password' => Hash::make($request['password'])
         ]);
 
@@ -61,7 +62,7 @@ class AuthController extends Controller
         return back();
     }
 
-    public function logout(Request $request): RedirectResponse
+    public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
