@@ -20,7 +20,9 @@ class CreateStoresTable extends Migration
             $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->softDeletes();
-            $table->timestamps(); // ! user relation
+            $table->timestamps();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

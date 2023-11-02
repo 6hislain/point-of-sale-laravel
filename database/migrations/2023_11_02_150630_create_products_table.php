@@ -19,9 +19,17 @@ class CreateProductsTable extends Migration
             $table->float('buying_price');
             $table->float('selling_price');
             $table->string('image')->nullable();
+            $table->string('serial')->nullable();
+            $table->string('supplier')->nullable();
             $table->text('description')->nullable();
             $table->softDeletes();
-            $table->timestamps(); // ! user, store, category relation
+            $table->timestamps();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('store_id');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('store_id')->references('id')->on('stores');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

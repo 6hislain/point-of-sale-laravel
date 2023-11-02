@@ -18,9 +18,18 @@ class CreateTransactionsTable extends Migration
             $table->integer('quantity');
             $table->enum('type', ['purchase', 'sale', 'expired'])->default('sale');
             $table->integer('group')->nullable();
+            $table->date('expiration_date')->nullable();
             $table->text('description')->nullable();
             $table->softDeletes();
-            $table->timestamps(); // ! user, store, client, product relation
+            $table->timestamps();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('store_id');
+            $table->unsignedBigInteger('client_id');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('store_id')->references('id')->on('stores');
+            $table->foreign('client_id')->references('id')->on('clients');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
