@@ -16,6 +16,7 @@ class Store extends Model
         'contact',
         'image',
         'description',
+        'user_id',
     ];
 
     public function user(): BelongsTo

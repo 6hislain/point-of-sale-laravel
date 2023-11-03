@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Store;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StoreController extends Controller
 {
@@ -14,7 +16,8 @@ class StoreController extends Controller
 
     public function index()
     {
-        return view('store.index');
+        $stores = Store::paginate(20);
+        return view('store.index', compact('stores'));
     }
 
     public function create()
@@ -22,9 +25,21 @@ class StoreController extends Controller
         return view('store.create');
     }
 
-    public function store()
+    public function store(Request $request): RedirectResponse
     {
-        return 'save store';
+        $request->validate([
+            'name' => ['required', 'min:3', 'max:50'],
+            'contact' => ['required', 'min:5', 'max:50']
+        ]);
+
+        Store::create([
+            'name' => $request['name'],
+            'contact' => $request['contact'],
+            'description' => $request['description'],
+            'user_id' => Auth::id(),
+        ]);
+
+        return redirect()->route('store.index');
     }
 
     public function show(Request $request, Store $store)

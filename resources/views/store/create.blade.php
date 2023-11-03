@@ -9,16 +9,22 @@
     </nav>
     <div class='d-flex justify-content-center align-items-center h-75'>
         <div class='text-center w-30'>
-            <form action='{{ _('store.store') }}' method='post'>
+            <form action='{{ route('store.store') }}' method='post' enctype="multipart/form-data">
                 <h2 class='mb-3'>Create Store</h2>
-                <input class='form-control mb-3' name='name' placeholder='full names' />
-                <input class='form-control mb-3' name='email' type='email' placeholder='my@email.com' />
-                <input class='form-control mb-3' name='password' type='password' placeholder="password" />
-                <input class='form-control mb-3' name='password_confirmation' type='password'
-                    placeholder="confirm password" />
+                @include('components.message')
+                <input class='form-control mb-3' name='name' placeholder='store name' />
+                <input class='form-control mb-3' name='contact' placeholder='email or telephone' />
+                <input class='form-control mb-3' name='image' type='file' />
+                <textarea id='editor' class='form-control' name='description' placeholder="write more details"></textarea>
                 @csrf
-                <button type='submit' class='btn btn-primary rounded-pill w-10'>Submit</button>
+                <button type='submit' class='btn btn-primary rounded-pill mt-3 w-10'>Submit</button>
             </form>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script src="/js/ckeditor.js"></script>
+    <script>
+        ClassicEditor.create(document.querySelector("#editor"));
+    </script>
 @endsection
