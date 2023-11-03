@@ -36,12 +36,12 @@
                     <i class='bi bi-box-arrow-left me-2'></i> Logout
                 </a>
             </div>
-        </div>
+        </div> 
         <div class='d-flex flex-row'>
             <img class='m-3 rounded-pill' alt='' src='https://placehold.co/50x50png' height='50' width='50' />
             <div class='text-white my-auto'>
-                <span class='d-block'>Full name</span>
-                <span class='d-block'>role</span>
+                <b class='d-block'>Full name</b>
+                <small class='d-block'>role</small>
             </div>
         </div>
     </div>

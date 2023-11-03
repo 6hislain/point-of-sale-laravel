@@ -14,12 +14,12 @@ class StoreController extends Controller
 
     public function index()
     {
-        return 'all stores';
+        return view('store.index');
     }
 
     public function create()
     {
-        return 'create store form';
+        return view('store.create');
     }
 
     public function store()
@@ -29,12 +29,12 @@ class StoreController extends Controller
 
     public function show(Request $request, Store $store)
     {
-        return 'one store';
+        return view('store.show');
     }
 
     public function edit(Request $request, Store $store)
     {
-        return 'edit store form';
+        return view('store.edit');
     }
 
     public function update(Request $request, Store $store)

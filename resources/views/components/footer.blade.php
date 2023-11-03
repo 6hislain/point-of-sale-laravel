@@ -4,7 +4,10 @@
             <div class='col-md-7'>
                 <h4>About Us</h4>
                 <p>
-                    The website "ScholarSponsor.com" is a valuable resource that empowers students in their pursuit of higher education by connecting them with a wide array of sponsorship opportunities. With an intuitive interface and a vast database of scholarships, grants, and financial aid options, ScholarSponsor simplifies the often overwhelming process of seeking funding for academic endeavors.
+                    The website "ScholarSponsor.com" is a valuable resource that empowers students in their pursuit of
+                    higher education by connecting them with a wide array of sponsorship opportunities. With an
+                    intuitive interface and a vast database of scholarships, grants, and financial aid options,
+                    ScholarSponsor simplifies the often overwhelming process of seeking funding for academic endeavors.
                 </p>
             </div>
             <div class='col-md-2'>
@@ -25,4 +28,4 @@
             </div>
         </div>
     </div>
-    </footer>
+</footer>
