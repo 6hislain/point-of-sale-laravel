@@ -14,12 +14,13 @@ class ClientController extends Controller
 
     public function index()
     {
-        return 'all clients';
+        $clients = Client::paginate(20);
+        return view('client.index', compact('clients'));
     }
 
     public function create()
     {
-        return 'create client form';
+        return view('client.create');
     }
 
     public function store()
@@ -29,12 +30,12 @@ class ClientController extends Controller
 
     public function show(Request $request, Client $client)
     {
-        return 'one client';
+        return view('client.show', compact('client'));
     }
 
     public function edit(Request $request, Client $client)
     {
-        return 'edit client form';
+        return view('client.edit', compact('client'));
     }
 
     public function update(Request $request, Client $client)
@@ -44,6 +45,7 @@ class ClientController extends Controller
 
     public function destroy(Request $request, Client $client)
     {
-        return 'delete client';
+        $client->delete();
+        return redirect()->route('client.index');
     }
 }

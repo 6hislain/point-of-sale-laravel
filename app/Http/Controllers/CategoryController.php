@@ -14,12 +14,13 @@ class CategoryController extends Controller
 
     public function index()
     {
-        return 'all categories';
+        $categories = Category::paginate(20);
+        return view('category.index', compact('categories'));
     }
 
     public function create()
     {
-        return 'create category form';
+        return view('category.create');
     }
 
     public function store()
@@ -29,12 +30,12 @@ class CategoryController extends Controller
 
     public function show(Request $request, Category $category)
     {
-        return 'one category';
+        return view('category.show', compact('category'));
     }
 
     public function edit(Request $request, Category $category)
     {
-        return 'edit category form';
+        return view('category.edit', compact('category'));
     }
 
     public function update(Request $request, Category $category)
@@ -44,6 +45,7 @@ class CategoryController extends Controller
 
     public function destroy(Request $request, Category $category)
     {
-        return 'delete category';
+        $category->delete();
+        return redirect()->route('category.index');
     }
 }

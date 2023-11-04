@@ -14,12 +14,13 @@ class TransactionController extends Controller
 
     public function index()
     {
-        return 'all transactions';
+        $transactions = Transaction::paginate(20);
+        return view('transaction.index' . compact('transactions'));
     }
 
     public function create()
     {
-        return 'create transaction form';
+        return view('transaction.create');
     }
 
     public function store()
@@ -29,12 +30,12 @@ class TransactionController extends Controller
 
     public function show(Request $request, Transaction $transaction)
     {
-        return 'one transaction';
+        return view('transaction.show', compact('transaction'));
     }
 
     public function edit(Request $request, Transaction $transaction)
     {
-        return 'edit transaction form';
+        return view('transaction.edit', compact('transaction'));
     }
 
     public function update(Request $request, Transaction $transaction)
@@ -44,6 +45,7 @@ class TransactionController extends Controller
 
     public function destroy(Request $request, Transaction $transaction)
     {
-        return 'delete transaction';
+        $transaction->delete();
+        return redirect()->route('transaction.index');
     }
 }

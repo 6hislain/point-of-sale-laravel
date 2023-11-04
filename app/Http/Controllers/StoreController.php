@@ -25,7 +25,7 @@ class StoreController extends Controller
         return view('store.create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $request->validate([
             'name' => ['required', 'min:3', 'max:50'],
@@ -44,21 +44,34 @@ class StoreController extends Controller
 
     public function show(Request $request, Store $store)
     {
-        return view('store.show');
+        return view('store.show', compact('store'));
     }
 
     public function edit(Request $request, Store $store)
     {
-        return view('store.edit');
+        return view('store.edit', compact('store'));
     }
 
     public function update(Request $request, Store $store)
     {
-        return 'update store';
+        $request->validate([
+            'name' => ['required', 'min:3', 'max:50'],
+            'contact' => ['required', 'min:5', 'max:50']
+        ]);
+
+        $store->update([
+            'name' => $request['name'],
+            'contact' => $request['contact'],
+            'description' => $request['description'],
+            'user_id' => Auth::id(),
+        ]);
+
+        return redirect()->route('store.index');
     }
 
     public function destroy(Request $request, Store $store)
     {
-        return 'delete store';
+        $store->delete();
+        return redirect()->route('store.index');
     }
 }

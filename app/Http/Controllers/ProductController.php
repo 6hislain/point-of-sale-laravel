@@ -14,12 +14,13 @@ class ProductController extends Controller
 
     public function index()
     {
-        return 'all products';
+        $products = Product::paginate(20);
+        return view('product.index', compact('products'));
     }
 
     public function create()
     {
-        return 'create product form';
+        return view('product.create');
     }
 
     public function store()
@@ -29,12 +30,12 @@ class ProductController extends Controller
 
     public function show(Request $request, Product $product)
     {
-        return 'one product';
+        return view('product.show', compact('product'));
     }
 
     public function edit(Request $request, Product $product)
     {
-        return 'edit product form';
+        return view('product.edit', compact('product'));
     }
 
     public function update(Request $request, Product $product)
@@ -44,6 +45,7 @@ class ProductController extends Controller
 
     public function destroy(Request $request, Product $product)
     {
-        return 'delete product';
+        $product->delete();
+        return redirect()->route('product.index');
     }
 }

@@ -15,9 +15,10 @@
         <thead class="table-light">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">store name</th>
-                <th scope="col">contact</th>
-                <th scope="col">description</th>
+                <th scope="col">Store Name</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Description</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,22 @@
                     <td>{{ $store->name }}</td>
                     <td>{{ $store->contact }}</td>
                     <td>{{ $store->description }}</td>
+                    <td>
+                        <div class='btn-group'>
+                            <a class='btn btn-sm btn-success' href='{{ route('store.show', $store->id) }}'>
+                                <i class='bi bi-eye'></i>
+                            </a>
+                            <a class='btn btn-sm btn-info' href='{{ route('store.edit', $store->id) }}'>
+                                <i class='bi bi-pencil'></i>
+                            </a>
+                        </div>
+                        <form action='{{ route('store.destroy', $store->id) }}' method='post' class='d-inline'>
+                            @csrf @method('delete')
+                            <button class='btn btn-sm btn-warning'>
+                                <i class='bi bi-trash'></i>
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
