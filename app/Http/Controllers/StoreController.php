@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Store;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -69,7 +68,7 @@ class StoreController extends Controller
         return redirect()->route('store.index');
     }
 
-    public function destroy(Request $request, Store $store)
+    public function destroy(Store $store)
     {
         $store->delete();
         return redirect()->route('store.index');

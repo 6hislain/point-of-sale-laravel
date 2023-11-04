@@ -10,7 +10,7 @@
     <div class='d-flex justify-content-center align-items-center h-75'>
         <div class='text-center w-30'>
             <form action='{{ route('store.update', $store->id) }}' method='post' enctype="multipart/form-data">
-                <h2 class='mb-3'>Edit Store</h2>
+                <h2 class='mb-3'>Edit store</h2>
                 @include('components.message')
                 <input class='form-control mb-3' name='name' value='{{ $store->name }}' />
                 <input class='form-control mb-3' name='contact' value='{{ $store->contact }}' />
@@ -19,7 +19,10 @@
                     {{ $store->description }}
                 </textarea>
                 @csrf @method('put')
-                <button type='submit' class='btn btn-primary rounded-pill mt-3 w-10'>Submit</button>
+                <div class='d-flex justify-content-between mt-3'>
+                    <button type='submit' class='btn btn-primary rounded-pill w-10'>Submit</button>
+                    <a href='{{ route('store.index') }}' class='btn btn-outline-primary rounded-pill w-10'>All store</a>
+                </div>
             </form>
         </div>
     </div>

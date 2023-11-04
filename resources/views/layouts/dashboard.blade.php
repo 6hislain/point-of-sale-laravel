@@ -16,7 +16,7 @@
 <body>
     <main class='d-flex flex-row'>
         @include('components.sidebar')
-        <div class='container my-3'>@yield('content')</div>
+        <div class='container w-75 my-3'>@yield('content')</div>
     </main>
     <script src="/js/bootstrap.bundle.min.js"></script>
     @yield('scripts')

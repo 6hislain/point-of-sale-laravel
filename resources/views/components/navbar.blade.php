@@ -26,7 +26,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Terms & Conditions</a></li>
+                        <li><a class="dropdown-item" href="#">License</a></li>
                     </ul>
                 </li>
                 @guest

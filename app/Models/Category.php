@@ -15,6 +15,8 @@ class Category extends Model
         'name',
         'image',
         'description',
+        'store_id',
+        'user_id',
     ];
 
     public function user(): BelongsTo

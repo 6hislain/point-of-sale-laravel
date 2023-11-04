@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <main class='d-flex flex-column justify-content-between'>
+    <main class='d-flex flex-column justify-content-between min-vh-100'>
         @include('components.navbar')
         <div class='container'>@yield('content')</div>
         @include('components.footer')
