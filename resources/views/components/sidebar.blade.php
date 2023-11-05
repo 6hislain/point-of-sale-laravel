@@ -1,4 +1,4 @@
-<div class='sidebar bg-body min-vh-100' data-bs-theme="dark">
+<div class='sidebar bg-body min-vh-100 d-none d-sm-block' data-bs-theme="dark">
     <div class='d-flex flex-column justify-content-between h-100'>
         <div>
             <div class='text-center'>

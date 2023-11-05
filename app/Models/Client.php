@@ -16,6 +16,8 @@ class Client extends Model
         'contact',
         'image',
         'description',
+        'store_id',
+        'user_id',
     ];
 
     public function user(): BelongsTo

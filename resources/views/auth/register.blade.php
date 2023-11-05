@@ -2,7 +2,7 @@
 @section('content')
     <div class='d-flex justify-content-center align-items-center'>
         <div class='text-center w-30'>
-            <form action='{{ _('register') }}' method='post'>
+            <form action='#' method='post' class='my-3'>
                 <h2 class='mb-3'>Register</h2>
                 @include('components.message')
                 <input class='form-control mb-3' name='name' placeholder='full names' />
