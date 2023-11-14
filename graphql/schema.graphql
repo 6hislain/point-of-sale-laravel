@@ -3,34 +3,6 @@ scalar DateTime
 
 scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 
-type Query {
-    user(
-        id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
-
-        email: String
-            @eq
-            @rules(apply: ["prohibits:id", "required_without:id", "email"])
-    ): User @find
-
-    users(name: String @where(operator: "like")): [User!]!
-        @paginate(defaultCount: 10)
-
-    store(id: ID): Store @find
-    stores: [Store] @paginate(defaultCount: 10)
-
-    category(id: ID): Category @find
-    categories: [Category] @paginate(defaultCount: 10)
-
-    product(id: ID): Product @find
-    products: [Product] @paginate(defaultCount: 10)
-
-    client(id: ID): Client @find
-    clients: [Client] @paginate(defaultCount: 10)
-
-    transaction(id: ID): Transaction @find
-    transactions: [Transaction] @paginate(defaultCount: 10)
-}
-
 enum UserRole {
     USER @enum(value: "user")
     CASHIER @enum(value: "cashier")
@@ -80,8 +52,8 @@ type Product {
     id: ID!
     name: String!
     image: String
-    buying_price: Int
-    selling_price: Int
+    buying_price: Float
+    selling_price: Float
     serial: String
     description: String
     supplier: String
@@ -117,4 +89,32 @@ type Transaction {
     store: Store!
     client: Client!
     product: Product!
+}
+
+type Query {
+    user(
+        id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
+
+        email: String
+            @eq
+            @rules(apply: ["prohibits:id", "required_without:id", "email"])
+    ): User @find
+
+    users(name: String @where(operator: "like")): [User!]!
+        @paginate(defaultCount: 10)
+
+    store(id: ID): Store @find
+    stores: [Store] @paginate(defaultCount: 10)
+
+    category(id: ID): Category @find
+    categories: [Category] @paginate(defaultCount: 10)
+
+    product(id: ID): Product @find
+    products: [Product] @paginate(defaultCount: 10)
+
+    client(id: ID): Client @find
+    clients: [Client] @paginate(defaultCount: 10)
+
+    transaction(id: ID): Transaction @find
+    transactions: [Transaction] @paginate(defaultCount: 10)
 }

@@ -13,8 +13,6 @@ Demo Point of Sale (POS) Laravel project, a powerful and user-friendly solution 
 
 ## Installation
 
-### Composer and PHP
-
 -   git clone https://github.com/6hislain/point-of-sale-laravel
 -   cd point-of-sale-laravel
 -   composer install
@@ -24,17 +22,8 @@ Demo Point of Sale (POS) Laravel project, a powerful and user-friendly solution 
 -   php artisan migrate
 -   php artisan serve
 
-### Docker
-
-reference https://mosesejim.hashnode.dev/how-to-host-your-laravel-app-on-render
-
 ## TODO
 
-### Database Tables
-
--   [x] User
--   [x] Store
--   [x] Category
--   [x] Product
--   [x] Client
--   [x] Transaction
+-   [ ] Product
+-   [ ] Transaction
+-   [ ] User
