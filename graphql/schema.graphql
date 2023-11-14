@@ -1,41 +1,120 @@
-"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
-scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+scalar DateTime
+    @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
-"Indicates what fields are available at the top level of a query operation."
+scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
+
 type Query {
-    "Find a single user by an identifying attribute."
     user(
-      "Search by primary key."
-      id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
+        id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
 
-      "Search by email address."
-      email: String @eq @rules(apply: ["prohibits:id", "required_without:id", "email"])
+        email: String
+            @eq
+            @rules(apply: ["prohibits:id", "required_without:id", "email"])
     ): User @find
 
-    "List multiple users."
-    users(
-      "Filters by name. Accepts SQL LIKE wildcards `%` and `_`."
-      name: String @where(operator: "like")
-    ): [User!]! @paginate(defaultCount: 10)
+    users(name: String @where(operator: "like")): [User!]!
+        @paginate(defaultCount: 10)
+
+    store(id: ID): Store @find
+    stores: [Store] @paginate(defaultCount: 10)
+
+    category(id: ID): Category @find
+    categories: [Category] @paginate(defaultCount: 10)
+
+    product(id: ID): Product @find
+    products: [Product] @paginate(defaultCount: 10)
+
+    client(id: ID): Client @find
+    clients: [Client] @paginate(defaultCount: 10)
+
+    transaction(id: ID): Transaction @find
+    transactions: [Transaction] @paginate(defaultCount: 10)
 }
 
-"Account of a person who utilizes this application."
+enum UserRole {
+    USER @enum(value: "user")
+    CASHIER @enum(value: "cashier")
+    ADMIN @enum(value: "admin")
+}
+
+enum TransactionType {
+    PURCHASE @enum(value: "purchase")
+    SALE @enum(value: "sale")
+    EXPIRED @enum(value: "expired")
+}
+
 type User {
-    "Unique primary key."
     id: ID!
-
-    "Non-unique name."
     name: String!
-
-    "Unique email address."
+    image: String
+    role: UserRole
     email: String!
-
-    "When the email was verified."
     email_verified_at: DateTime
-
-    "When the account was created."
     created_at: DateTime!
-
-    "When the account was last updated."
     updated_at: DateTime!
+}
+
+type Store {
+    id: ID!
+    name: String!
+    contact: String
+    image: String
+    description: String
+    created_at: DateTime!
+    updated_at: DateTime!
+    user: User!
+}
+
+type Category {
+    id: ID!
+    name: String!
+    image: String
+    description: String
+    created_at: DateTime!
+    updated_at: DateTime!
+    user: User!
+    store: Store!
+}
+
+type Product {
+    id: ID!
+    name: String!
+    image: String
+    buying_price: Int
+    selling_price: Int
+    serial: String
+    description: String
+    supplier: String
+    created_at: DateTime!
+    updated_at: DateTime!
+    user: User!
+    store: Store!
+    category: Category!
+}
+
+type Client {
+    id: ID!
+    name: String!
+    contact: String
+    image: String
+    description: String
+    created_at: DateTime!
+    updated_at: DateTime!
+    user: User!
+    store: Store!
+}
+
+type Transaction {
+    id: ID!
+    quantity: Int!
+    type: TransactionType
+    group: Int
+    expiration_date: Date
+    description: String
+    created_at: DateTime!
+    updated_at: DateTime!
+    user: User!
+    store: Store!
+    client: Client!
+    product: Product!
 }

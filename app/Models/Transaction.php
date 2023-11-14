@@ -16,6 +16,10 @@ class Transaction extends Model
         'group',
         'expiration_date',
         'description',
+        'user_id',
+        'store_id',
+        'client_id',
+        'product_id',
     ];
 
     protected $casts = [

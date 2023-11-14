@@ -19,6 +19,9 @@ class Product extends Model
         'serial',
         'supplier',
         'description',
+        'user_id',
+        'store_id',
+        'category_id',
     ];
 
     public function user(): BelongsTo

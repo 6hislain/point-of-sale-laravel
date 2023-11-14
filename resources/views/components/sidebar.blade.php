@@ -42,8 +42,8 @@
             <img class='m-3 rounded-pill' alt='' src='https://placehold.co/50x50png' height='50'
                 width='50' />
             <div class='text-white my-auto'>
-                <b class='d-block'>Full name</b>
-                <small class='d-block'>role</small>
+                <b class='d-block'>{{ Auth::user()->name }}</b>
+                <small class='d-block'>{{ Auth::user()->role }}</small>
             </div>
         </div>
     </div>
