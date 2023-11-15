@@ -26,17 +26,6 @@ type User {
     updated_at: DateTime!
 }
 
-type Store {
-    id: ID!
-    name: String!
-    contact: String
-    image: String
-    description: String
-    created_at: DateTime!
-    updated_at: DateTime!
-    user: User!
-}
-
 type Category {
     id: ID!
     name: String!
@@ -45,7 +34,6 @@ type Category {
     created_at: DateTime!
     updated_at: DateTime!
     user: User!
-    store: Store!
 }
 
 type Product {
@@ -60,7 +48,6 @@ type Product {
     created_at: DateTime!
     updated_at: DateTime!
     user: User!
-    store: Store!
     category: Category!
 }
 
@@ -73,7 +60,6 @@ type Client {
     created_at: DateTime!
     updated_at: DateTime!
     user: User!
-    store: Store!
 }
 
 type Transaction {
@@ -86,7 +72,6 @@ type Transaction {
     created_at: DateTime!
     updated_at: DateTime!
     user: User!
-    store: Store!
     client: Client!
     product: Product!
 }
@@ -100,21 +85,17 @@ type Query {
             @rules(apply: ["prohibits:id", "required_without:id", "email"])
     ): User @find
 
-    users(name: String @where(operator: "like")): [User!]!
-        @paginate(defaultCount: 10)
-
-    store(id: ID): Store @find
-    stores: [Store] @paginate(defaultCount: 10)
+    users(name: String @where(operator: "like")): [User!]! @paginate
 
     category(id: ID): Category @find
-    categories: [Category] @paginate(defaultCount: 10)
+    categories: [Category] @paginate
 
     product(id: ID): Product @find
-    products: [Product] @paginate(defaultCount: 10)
+    products: [Product] @paginate
 
     client(id: ID): Client @find
-    clients: [Client] @paginate(defaultCount: 10)
+    clients: [Client] @paginate
 
     transaction(id: ID): Transaction @find
-    transactions: [Transaction] @paginate(defaultCount: 10)
+    transactions: [Transaction] @paginate
 }

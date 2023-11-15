@@ -5,7 +5,6 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DefaultController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\StoreController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [DefaultController::class, 'home'])->name('home');
+Route::get('/about', [DefaultController::class, 'about'])->name('about');
+Route::get('/contact', [DefaultController::class, 'contact'])->name('contact');
+Route::get('/license', [DefaultController::class, 'license'])->name('license');
 Route::get('/dashboard', [DefaultController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -30,7 +32,6 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::resources([
-    'store' => StoreController::class,
     'client' => ClientController::class,
     'product' => ProductController::class,
     'category' => CategoryController::class,

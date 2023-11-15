@@ -12,9 +12,6 @@
                 <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">
                     <i class='bi bi-speedometer2 me-2'></i> Dashboard
                 </a>
-                <a href="{{ route('store.index') }}" class="list-group-item list-group-item-action">
-                    <i class='bi bi-shop-window me-2'></i> Store
-                </a>
                 <a href="{{ route('category.index') }}" class="list-group-item list-group-item-action">
                     <i class='bi bi-collection me-2'></i> Category
                 </a>
@@ -27,10 +24,10 @@
                 <a href="{{ route('transaction.index') }}" class="list-group-item list-group-item-action">
                     <i class='bi bi-arrow-down-up me-2'></i> Transaction
                 </a>
-                <a href="{{ route('store.index') }}" class="list-group-item list-group-item-action">
+                <a href="{{ route('category.index') }}" class="list-group-item list-group-item-action">
                     <i class='bi bi-people me-2'></i> User
                 </a>
-                <a href="{{ route('store.index') }}" class="list-group-item list-group-item-action">
+                <a href="{{ route('category.index') }}" class="list-group-item list-group-item-action">
                     <i class='bi bi-person-circle me-2'></i> Profile
                 </a>
                 <a href="{{ route('logout') }}" class="list-group-item list-group-item-action">

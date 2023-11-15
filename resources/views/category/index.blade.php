@@ -20,7 +20,6 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
-                <th scope="col">Store</th>
                 <th scope="col">Description</th>
                 <th scope="col">Action</th>
             </tr>
@@ -30,7 +29,6 @@
                 <tr>
                     <th scope="row">{{ $category->id }}</th>
                     <td>{{ $category->name }}</td>
-                    <td>{{ $category->store->name }}</td>
                     <td>{{ $category->description }}</td>
                     <td>
                         <div class='btn-group'>

@@ -23,11 +23,9 @@ class CreateTransactionsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('store_id');
             $table->unsignedBigInteger('client_id')->nullable();
             $table->unsignedBigInteger('product_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('store_id')->references('id')->on('stores');
             $table->foreign('client_id')->references('id')->on('clients');
             $table->foreign('product_id')->references('id')->on('products');
         });

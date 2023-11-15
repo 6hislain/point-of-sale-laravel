@@ -44,17 +44,21 @@
             margin-left: var(--px-12);
         }
     </style>
-    <script src="{{ \MLL\GraphiQL\DownloadAssetsCommand::reactPath() }}"></script>
+    {{-- <script src="{{ \MLL\GraphiQL\DownloadAssetsCommand::reactPath() }}"></script>
     <script src="{{ \MLL\GraphiQL\DownloadAssetsCommand::reactDOMPath() }}"></script>
-    <link rel="stylesheet" href="{{ \MLL\GraphiQL\DownloadAssetsCommand::cssPath() }}" />
+    <link rel="stylesheet" href="{{ \MLL\GraphiQL\DownloadAssetsCommand::cssPath() }}" /> --}}
+    <script src="/vendor/graphiql/react.production.min.js"></script>
+    <script src="/vendor/graphiql/react-dom.production.min.js"></script>
+    <link rel="stylesheet" href="/vendor/graphiql/graphiql.min.css" />
     <link rel="shortcut icon" href="{{ \MLL\GraphiQL\DownloadAssetsCommand::faviconPath() }}" />
 </head>
 
 <body>
 
     <div id="graphiql">Loading...</div>
-    <script src="{{ \MLL\GraphiQL\DownloadAssetsCommand::jsPath() }}"></script>
-    <script src="{{ \MLL\GraphiQL\DownloadAssetsCommand::explorerPluginPath() }}"></script>
+    {{-- <script src="{{ \MLL\GraphiQL\DownloadAssetsCommand::jsPath() }}"></script> --}}
+    {{-- <script src="{{ \MLL\GraphiQL\DownloadAssetsCommand::explorerPluginPath() }}"></script> --}}
+    <script src="/vendor/graphiql/graphiql.min.js"></script>
     <script src="https://unpkg.com/@graphiql/plugin-explorer@0.1.20/dist/graphiql-plugin-explorer.umd.js"></script>
     <script>
         const fetcher = GraphiQL.createFetcher({

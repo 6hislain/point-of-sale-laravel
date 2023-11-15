@@ -17,7 +17,6 @@ class Transaction extends Model
         'expiration_date',
         'description',
         'user_id',
-        'store_id',
         'client_id',
         'product_id',
     ];
@@ -39,10 +38,5 @@ class Transaction extends Model
     public function client(): BelongsTo
     {
         return $this->belongsTo(Client::class);
-    }
-
-    public function store(): BelongsTo
-    {
-        return $this->belongsTo(Store::class);
     }
 }

@@ -16,18 +16,12 @@ class Client extends Model
         'contact',
         'image',
         'description',
-        'store_id',
         'user_id',
     ];
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function store(): BelongsTo
-    {
-        return $this->belongsTo(Store::class);
     }
 
     public function transactions(): HasMany

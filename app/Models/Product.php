@@ -20,18 +20,12 @@ class Product extends Model
         'supplier',
         'description',
         'user_id',
-        'store_id',
         'category_id',
     ];
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function store(): BelongsTo
-    {
-        return $this->belongsTo(Store::class);
     }
 
     public function category(): BelongsTo

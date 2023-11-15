@@ -14,12 +14,6 @@
                 @include('components.message')
                 <input class='form-control mb-3' name='name' placeholder='client name' />
                 <input class='form-control mb-3' name='contact' placeholder='email or phone' />
-                <select name="store" class="form-select mb-3">
-                    <option value=''>- select store -</option>
-                    @foreach ($stores as $store)
-                        <option value='{{ $store->id }}'>{{ $store->name }}</option>
-                    @endforeach
-                </select>
                 <input class='form-control mb-3' name='image' type='file' />
                 <textarea id='editor' class='form-control' name='description' placeholder="write more details"></textarea>
                 @csrf

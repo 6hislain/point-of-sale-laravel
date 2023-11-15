@@ -21,12 +21,13 @@
                         Support
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">About Us</a></li>
-                        <li><a class="dropdown-item" href="#">Contact Us</a></li>
+                        <li><a class="dropdown-item" href="{{ route('about') }}">About Us</a></li>
+                        <li><a class="dropdown-item" href="{{ route('contact') }}">Contact Us</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">License</a></li>
+                        <li><a class="dropdown-item" href="{{ route('graphiql') }}">GraphiQL</a></li>
+                        <li><a class="dropdown-item" href="{{ route('license') }}">License</a></li>
                     </ul>
                 </li>
                 @guest

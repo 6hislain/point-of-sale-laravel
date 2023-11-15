@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
-use App\Models\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,8 +21,7 @@ class ClientController extends Controller
 
     public function create()
     {
-        $stores = Store::take(10)->get();
-        return view('client.create', compact('stores'));
+        return view('client.create');
     }
 
     public function store(Request $request)
@@ -31,12 +29,10 @@ class ClientController extends Controller
         $request->validate([
             'name' => ['required', 'min:3', 'max:50'],
             'contact' => ['required', 'min:5', 'max:50'],
-            'store' => ['required']
         ]);
 
         Client::create([
             'name' => $request['name'],
-            'store_id' => $request['store'],
             'contact' => $request['contact'],
             'description' => $request['description'],
             'user_id' => Auth::id(),
@@ -52,8 +48,7 @@ class ClientController extends Controller
 
     public function edit(Request $request, Client $client)
     {
-        $stores = Store::take(10)->get();
-        return view('client.edit', compact(['client', 'stores']));
+        return view('client.edit', compact('client'));
     }
 
     public function update(Request $request, Client $client)
@@ -61,12 +56,10 @@ class ClientController extends Controller
         $request->validate([
             'name' => ['required', 'min:3', 'max:50'],
             'contact' => ['required', 'min:5', 'max:50'],
-            'store' => ['required']
         ]);
 
         $client->update([
             'name' => $request['name'],
-            'store_id' => $request['store'],
             'contact' => $request['contact'],
             'description' => $request['description'],
             'user_id' => Auth::id(),
