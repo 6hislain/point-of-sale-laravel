@@ -15,42 +15,34 @@
             </a>
         </span>
     </div>
-    <table class="table table-bordered table-hover">
-        <thead class="table-light">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Store Name</th>
-                <th scope="col">Contact</th>
-                <th scope="col">Description</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($stores as $store)
-                <tr>
-                    <th scope="row">{{ $store->id }}</th>
-                    <td>{{ $store->name }}</td>
-                    <td>{{ $store->contact }}</td>
-                    <td>{{ $store->description }}</td>
-                    <td>
-                        <div class='btn-group'>
-                            <a class='btn btn-sm btn-success' href='{{ route('store.show', $store->id) }}'>
-                                <i class='bi bi-eye'></i>
-                            </a>
-                            <a class='btn btn-sm btn-info' href='{{ route('store.edit', $store->id) }}'>
-                                <i class='bi bi-pencil'></i>
-                            </a>
+    <div class="row">
+        @foreach ($stores as $store)
+            <div class="col-md-3 mb-3">
+                <div class="card shadow-sm">
+                    <img src="https://placehold.co/300x200png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $store->name }}</h5>
+                        <div class='card-text'>{!! $store->description !!}</div>
+                        <div class='float-end'>
+                            <div class='btn-group'>
+                                <a class='btn btn-sm btn-success' href='{{ route('store.show', $store->id) }}'>
+                                    View
+                                </a>
+                                <a class='btn btn-sm btn-info' href='{{ route('store.edit', $store->id) }}'>
+                                    Edit
+                                </a>
+                            </div>
+                            <form action='{{ route('store.destroy', $store->id) }}' method='post' class='d-inline'>
+                                @csrf @method('delete')
+                                <button class='btn btn-sm btn-warning'>
+                                    <i class='bi bi-trash'></i>
+                                </button>
+                            </form>
                         </div>
-                        <form action='{{ route('store.destroy', $store->id) }}' method='post' class='d-inline'>
-                            @csrf @method('delete')
-                            <button class='btn btn-sm btn-warning'>
-                                <i class='bi bi-trash'></i>
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
     {{ $stores->links() }}
 @endsection
