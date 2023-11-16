@@ -11,7 +11,7 @@
             width='75' />
         <div>
             <h3 class='fw-normal'>Welcome, {{ Auth::user()->name }}</h3>
-            <p class="text-muted mb-0">These are your analytics stats for today {{ today()->format('M d, Y') }}</p>
+            <p class="text-muted mb-0">These are your analytics stats for today {{ today()->format('F d, Y') }}</p>
         </div>
     </div>
     <hr>

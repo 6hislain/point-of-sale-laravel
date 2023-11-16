@@ -15,11 +15,11 @@
                 <a href="{{ route('category.index') }}" class="list-group-item list-group-item-action">
                     <i class='bi bi-collection me-2'></i> Category
                 </a>
-                <a href="{{ route('product.index') }}" class="list-group-item list-group-item-action">
-                    <i class='bi bi-box me-2'></i> Product
-                </a>
                 <a href="{{ route('client.index') }}" class="list-group-item list-group-item-action">
                     <i class='bi bi-person-check me-2'></i> Client
+                </a>
+                <a href="{{ route('product.index') }}" class="list-group-item list-group-item-action">
+                    <i class='bi bi-box me-2'></i> Product
                 </a>
                 <a href="{{ route('transaction.index') }}" class="list-group-item list-group-item-action">
                     <i class='bi bi-arrow-down-up me-2'></i> Transaction
