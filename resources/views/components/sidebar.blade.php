@@ -9,22 +9,28 @@
                 <a href="{{ route('home') }}" class="list-group-item list-group-item-action">
                     <i class='bi bi-house me-2'></i> Home
                 </a>
-                <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action">
+                <a href="{{ route('dashboard') }}"
+                    class="list-group-item list-group-item-action @if (Route::currentRouteName() == 'dashboard') active @endif">
                     <i class='bi bi-speedometer2 me-2'></i> Dashboard
                 </a>
-                <a href="{{ route('category.index') }}" class="list-group-item list-group-item-action">
+                <a href="{{ route('category.index') }}"
+                    class="list-group-item list-group-item-action @if (str_contains(Route::currentRouteName(), 'category')) active @endif">
                     <i class='bi bi-collection me-2'></i> Category
                 </a>
-                <a href="{{ route('client.index') }}" class="list-group-item list-group-item-action">
+                <a href="{{ route('client.index') }}"
+                    class="list-group-item list-group-item-action @if (str_contains(Route::currentRouteName(), 'client')) active @endif">
                     <i class='bi bi-person-check me-2'></i> Client
                 </a>
-                <a href="{{ route('product.index') }}" class="list-group-item list-group-item-action">
+                <a href="{{ route('product.index') }}"
+                    class="list-group-item list-group-item-action @if (str_contains(Route::currentRouteName(), 'product')) active @endif">
                     <i class='bi bi-box me-2'></i> Product
                 </a>
-                <a href="{{ route('transaction.index') }}" class="list-group-item list-group-item-action">
+                <a href="{{ route('transaction.index') }}"
+                    class="list-group-item list-group-item-action @if (str_contains(Route::currentRouteName(), 'transaction')) active @endif">
                     <i class='bi bi-arrow-down-up me-2'></i> Transaction
                 </a>
-                <a href="{{ route('user.index') }}" class="list-group-item list-group-item-action">
+                <a href="{{ route('user.index') }}"
+                    class="list-group-item list-group-item-action @if (str_contains(Route::currentRouteName(), 'user')) active @endif">
                     <i class='bi bi-people me-2'></i> User
                 </a>
                 <a href="{{ route('category.index') }}" class="list-group-item list-group-item-action">

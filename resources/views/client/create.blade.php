@@ -12,10 +12,12 @@
             <form action='{{ route('client.store') }}' method='post' enctype="multipart/form-data">
                 <h2 class='mb-3'>Create client</h2>
                 @include('components.message')
-                <input class='form-control mb-3' name='name' placeholder='client name' />
-                <input class='form-control mb-3' name='contact' placeholder='email or phone' />
+                <input class='form-control mb-3' name='name' placeholder='client name' value='{{ old('name') }}' />
+                <input class='form-control mb-3' name='contact' placeholder='email or phone' value='{{ old('contact') }}' />
                 <input class='form-control mb-3' name='image' type='file' />
-                <textarea id='editor' class='form-control' name='description' placeholder="write more details"></textarea>
+                <textarea id='editor' class='form-control' name='description' placeholder="write more details">
+                    {{ old('description') }}
+                </textarea>
                 @csrf
                 <div class='d-flex justify-content-between mt-3'>
                     <button type='submit' class='btn btn-primary rounded-pill w-10'>Submit</button>

@@ -22,7 +22,8 @@
                         </select>
                     </div>
                     <div class='col-md-4'>
-                        <input class='form-control mb-3' name='quantity' placeholder='quantity' type='number' />
+                        <input class='form-control mb-3' name='quantity' placeholder='quantity' type='number'
+                            value='{{ old('quantity') }}' />
                     </div>
                     <div class='col-md-4'>
                         <select class='form-select mb-3' name='client'>
@@ -43,14 +44,18 @@
                     <div class='col-md-5'>
                         <div class='input-group mb-3'>
                             <span class="input-group-text">expiry date</span>
-                            <input class='form-control' name='expiration_date' type='date' />
+                            <input class='form-control' name='expiration_date' type='date'
+                                value='{{ old('expiration_date') }}' />
                         </div>
                     </div>
                     <div class='col-md-2'>
-                        <input class='form-control mb-3' name='group' placeholder='group id' type='number' />
+                        <input class='form-control mb-3' name='group' placeholder='group id' type='number'
+                            value='{{ old('group') }}' />
                     </div>
                 </div>
-                <textarea id='editor' class='form-control' name='description' placeholder="write more details"></textarea>
+                <textarea id='editor' class='form-control' name='description' placeholder="write more details">
+                    {{ old('description') }}
+                </textarea>
                 @csrf
                 <div class='d-flex justify-content-between mt-3'>
                     <button type='submit' class='btn btn-primary rounded-pill w-10'>Submit</button>

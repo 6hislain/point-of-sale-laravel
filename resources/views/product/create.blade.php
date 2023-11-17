@@ -14,7 +14,8 @@
                 @include('components.message')
                 <div class='row'>
                     <div class='col-md-8'>
-                        <input class='form-control mb-3' name='name' placeholder='product name' />
+                        <input class='form-control mb-3' name='name' placeholder='product name'
+                            value='{{ old('name') }}' />
                     </div>
                     <div class='col-md-4'>
                         <select class='form-select mb-3' name='category'>
@@ -25,22 +26,28 @@
                         </select>
                     </div>
                     <div class='col-md-4'>
-                        <input class='form-control mb-3' name='buying_price' placeholder='buying price' type='number' />
+                        <input class='form-control mb-3' name='buying_price' placeholder='buying price' type='number'
+                            value='{{ old('buying_price') }}' />
                     </div>
                     <div class='col-md-4'>
-                        <input class='form-control mb-3' name='selling_price' placeholder='selling price' type='number' />
+                        <input class='form-control mb-3' name='selling_price' placeholder='selling price' type='number'
+                            value='{{ old('selling_price') }}' />
                     </div>
                     <div class='col-md-4'>
-                        <input class='form-control mb-3' name='supplier' placeholder='supplier name' />
+                        <input class='form-control mb-3' name='supplier' placeholder='supplier name'
+                            value='{{ old('supplier') }}' />
                     </div>
                     <div class='col-md-4'>
-                        <input class='form-control mb-3' name='serial' placeholder='serial number' />
+                        <input class='form-control mb-3' name='serial' placeholder='serial number'
+                            value='{{ old('serial') }}' />
                     </div>
                     <div class="col-md-8">
                         <input class='form-control mb-3' name='image' type='file' />
                     </div>
                 </div>
-                <textarea id='editor' class='form-control' name='description' placeholder="write more details"></textarea>
+                <textarea id='editor' class='form-control' name='description' placeholder="write more details">
+                    {{ old('description') }}
+                </textarea>
                 @csrf
                 <div class='d-flex justify-content-between mt-3'>
                     <button type='submit' class='btn btn-primary rounded-pill w-10'>Submit</button>

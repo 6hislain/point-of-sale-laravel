@@ -8,7 +8,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Home</a>
+                    <a class="nav-link @if (Route::currentRouteName() == 'home') active @endif" href="{{ route('home') }}">
+                        Home
+                    </a>
                 </li>
                 @auth
                     <li class="nav-item">
@@ -16,26 +18,45 @@
                     </li>
                 @endauth
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                    <a class="nav-link dropdown-toggle @if (in_array(Route::currentRouteName(), ['about', 'contact', 'license'])) active @endif" href="#"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Support
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('about') }}">About Us</a></li>
-                        <li><a class="dropdown-item" href="{{ route('contact') }}">Contact Us</a></li>
+                        <li>
+                            <a class="dropdown-item @if (Route::currentRouteName() == 'about') active @endif"
+                                href="{{ route('about') }}">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item @if (Route::currentRouteName() == 'contact') active @endif"
+                                href="{{ route('contact') }}">
+                                Contact Us
+                            </a>
+                        </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                         <li><a class="dropdown-item" href="{{ route('graphiql') }}">GraphiQL</a></li>
-                        <li><a class="dropdown-item" href="{{ route('license') }}">License</a></li>
+                        <li>
+                            <a class="dropdown-item @if (Route::currentRouteName() == 'license') active @endif"
+                                href="{{ route('license') }}">
+                                License
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        <a class="nav-link @if (Route::currentRouteName() == 'login') active @endif" href="{{ route('login') }}">
+                            Login
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">Register</a>
+                        <a class="nav-link @if (Route::currentRouteName() == 'register') active @endif" href="{{ route('register') }}">
+                            Register
+                        </a>
                     </li>
                 @else
                     <li class="nav-item">
