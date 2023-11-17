@@ -24,6 +24,5 @@ Demo Point of Sale (POS) Laravel project, a powerful and user-friendly solution 
 
 ## TODO
 
--   [ ] Product
--   [ ] Transaction
 -   [ ] User
+-   restore form old value

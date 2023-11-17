@@ -24,7 +24,7 @@
                 <a href="{{ route('transaction.index') }}" class="list-group-item list-group-item-action">
                     <i class='bi bi-arrow-down-up me-2'></i> Transaction
                 </a>
-                <a href="{{ route('category.index') }}" class="list-group-item list-group-item-action">
+                <a href="{{ route('user.index') }}" class="list-group-item list-group-item-action">
                     <i class='bi bi-people me-2'></i> User
                 </a>
                 <a href="{{ route('category.index') }}" class="list-group-item list-group-item-action">
