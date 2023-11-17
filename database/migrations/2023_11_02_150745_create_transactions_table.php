@@ -20,14 +20,15 @@ class CreateTransactionsTable extends Migration
             $table->integer('group')->nullable();
             $table->date('expiration_date')->nullable();
             $table->text('description')->nullable();
+            $table->float('total');
             $table->softDeletes();
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('client_id')->nullable();
             $table->unsignedBigInteger('product_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('client_id')->references('id')->on('clients');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

@@ -67,6 +67,7 @@ type Transaction {
     quantity: Int!
     type: TransactionType
     group: Int
+    total: Float
     expiration_date: Date
     description: String
     created_at: DateTime!

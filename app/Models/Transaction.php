@@ -14,6 +14,7 @@ class Transaction extends Model
         'quantity',
         'type',
         'group',
+        'total',
         'expiration_date',
         'description',
         'user_id',

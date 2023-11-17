@@ -30,7 +30,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => ['required', 'min:3', 'max:50'],
-            'category' => ['required', 'integer'],
+            'category' => ['required', 'integer', 'min:1'],
             'buying_price' => ['required_with:selling_price', 'min:1'],
             'selling_price' => ['required_with:buying_price', 'gt:buying_price'],
             'supplier' => ['required', 'min:3', 'max:50'],

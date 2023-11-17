@@ -6,5 +6,5 @@
             <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
         </ol>
     </nav>
-    <h2>Show category</h2>
+    <h2>Show transaction</h2>
 @endsection
