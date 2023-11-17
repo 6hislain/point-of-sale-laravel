@@ -7,7 +7,7 @@
         </ol>
     </nav>
     <div class='d-flex flex-row'>
-        <img class='my-auto me-3 rounded-pill' alt='' src='https://placehold.co/75x75png' height='75'
+        <img class='my-auto me-3 rounded-pill' alt='{{ Auth::user()->name }}' src='/img/user.png' height='75'
             width='75' />
         <div>
             <h3 class='fw-normal'>Welcome, {{ Auth::user()->name }}</h3>

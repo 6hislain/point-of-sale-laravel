@@ -2,8 +2,7 @@
     <div class='d-flex flex-column justify-content-between h-100'>
         <div>
             <div class='text-center'>
-                <img class='m-3 rounded-pill' alt='' src='https://placehold.co/100x100png' height='100'
-                    width='100' />
+                <img class='m-3 rounded-pill' alt='logo' src='/img/cashier.png' height='100' width='100' />
             </div>
             <div class="list-group list-group-flush">
                 <a href="{{ route('home') }}" class="list-group-item list-group-item-action">
@@ -42,7 +41,7 @@
             </div>
         </div>
         <div class='d-flex flex-row'>
-            <img class='m-3 rounded-pill' alt='' src='https://placehold.co/50x50png' height='50'
+            <img class='m-3 rounded-pill' alt='{{ Auth::user()->name }}' src='/img/user.png' height='50'
                 width='50' />
             <div class='text-white my-auto'>
                 <b class='d-block'>{{ Auth::user()->name }}</b>
