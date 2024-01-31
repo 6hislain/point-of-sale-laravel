@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
 
 class AuthController extends Controller
 { // ! reset password, remember on login
@@ -15,7 +16,7 @@ class AuthController extends Controller
         $this->middleware('guest')->except(['logout', 'users']);
     }
 
-    public function showLogin()
+    public function showLogin(): View
     {
         return view('auth.login');
     }
@@ -35,7 +36,7 @@ class AuthController extends Controller
         return back()->withErrors(['email' => 'The provided credentials do not match our records.'])->onlyInput('email');
     }
 
-    public function showRegister()
+    public function showRegister(): View
     {
         return view('auth.register');
     }
@@ -62,7 +63,7 @@ class AuthController extends Controller
         return back();
     }
 
-    public function logout(Request $request)
+    public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
         $request->session()->invalidate();
@@ -70,7 +71,7 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public function users()
+    public function users(): View
     {
         $users = User::paginate(20);
         return view('user.index', compact('users'));

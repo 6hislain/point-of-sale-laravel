@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Product;
 use App\Models\Transaction;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class TransactionController extends Controller
 {
@@ -15,20 +17,20 @@ class TransactionController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(): View
     {
         $transactions = Transaction::paginate(20);
         return view('transaction.index', compact('transactions'));
     }
 
-    public function create()
+    public function create(): View
     {
         $clients = Client::all();
         $products = Product::all();
         return view('transaction.create', compact(['clients', 'products']));
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'product' => 'required', 'integer', 'min:1',
@@ -56,19 +58,19 @@ class TransactionController extends Controller
         return redirect()->route('transaction.index');
     }
 
-    public function show(Request $request, Transaction $transaction)
+    public function show(Request $request, Transaction $transaction): View
     {
         return view('transaction.show', compact('transaction'));
     }
 
-    public function edit(Request $request, Transaction $transaction)
+    public function edit(Request $request, Transaction $transaction): View
     {
         $clients = Client::all();
         $products = Product::all();
         return view('transaction.edit', compact(['clients', 'products', 'transaction']));
     }
 
-    public function update(Request $request, Transaction $transaction)
+    public function update(Request $request, Transaction $transaction): RedirectResponse
     {
         $request->validate([
             'product' => 'required', 'integer', 'min:1',
@@ -96,7 +98,7 @@ class TransactionController extends Controller
         return redirect()->route('transaction.index');
     }
 
-    public function destroy(Request $request, Transaction $transaction)
+    public function destroy(Request $request, Transaction $transaction): RedirectResponse
     {
         $transaction->delete();
         return redirect()->route('transaction.index');

@@ -7,6 +7,7 @@ use App\Models\Client;
 use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class DefaultController extends Controller
 {
@@ -15,27 +16,27 @@ class DefaultController extends Controller
         $this->middleware('auth')->except(['home', 'about', 'contact', 'license']);
     }
 
-    public function home()
+    public function home(): View
     {
         return view('home');
     }
 
-    public function about()
+    public function about(): View
     {
         return view('about');
     }
 
-    public function contact()
+    public function contact(): View
     {
         return view('contact');
     }
 
-    public function license()
+    public function license(): View
     {
         return view('license');
     }
 
-    public function dashboard()
+    public function dashboard(): View
     {
         $clients = Client::count();
         $products = Product::count();

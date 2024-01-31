@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class ProductController extends Controller
 {
@@ -14,19 +16,19 @@ class ProductController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(): View
     {
         $products = Product::paginate(20);
         return view('product.index', compact('products'));
     }
 
-    public function create()
+    public function create(): View
     {
         $categories = Category::all();
         return view('product.create', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'min:3', 'max:50'],
@@ -50,18 +52,18 @@ class ProductController extends Controller
         return redirect()->route('product.index');
     }
 
-    public function show(Request $request, Product $product)
+    public function show(Request $request, Product $product): View
     {
         return view('product.show', compact('product'));
     }
 
-    public function edit(Request $request, Product $product)
+    public function edit(Request $request, Product $product): View
     {
         $categories = Category::all();
         return view('product.edit', compact(['product', 'categories']));
     }
 
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Product $product): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'min:3', 'max:50'],
@@ -85,7 +87,7 @@ class ProductController extends Controller
         return redirect()->route('product.index');
     }
 
-    public function destroy(Product $product)
+    public function destroy(Product $product): RedirectResponse
     {
         $product->delete();
         return redirect()->route('product.index');

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class ClientController extends Controller
 {
@@ -13,18 +15,18 @@ class ClientController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(): View
     {
         $clients = Client::paginate(20);
         return view('client.index', compact('clients'));
     }
 
-    public function create()
+    public function create(): View
     {
         return view('client.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'min:3', 'max:50'],
@@ -41,17 +43,17 @@ class ClientController extends Controller
         return redirect()->route('client.index');
     }
 
-    public function show(Request $request, Client $client)
+    public function show(Request $request, Client $client): View
     {
         return view('client.show', compact('client'));
     }
 
-    public function edit(Request $request, Client $client)
+    public function edit(Request $request, Client $client): View
     {
         return view('client.edit', compact('client'));
     }
 
-    public function update(Request $request, Client $client)
+    public function update(Request $request, Client $client): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'min:3', 'max:50'],
@@ -68,7 +70,7 @@ class ClientController extends Controller
         return redirect()->route('client.index');
     }
 
-    public function destroy(Client $client)
+    public function destroy(Client $client): RedirectResponse
     {
         $client->delete();
         return redirect()->route('client.index');
