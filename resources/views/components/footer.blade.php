@@ -21,9 +21,9 @@
                 <h4>Get in touch</h4>
                 <ul>
                     <li>Phone: 071 234 567</li>
-                    <li>Email: info@studentsponsor.com</li>
+                    <li>Email: info@pointofsale.com</li>
                     <li>Whatsapp: +250 71 234 567</li>
-                    <li>Facebook: @studentsponsor</li>
+                    <li>Facebook: @pointofsale</li>
                 </ul>
             </div>
         </div>
