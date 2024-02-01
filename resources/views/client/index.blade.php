@@ -31,7 +31,7 @@
                     <th scope="row">{{ $client->id }}</th>
                     <td>{{ $client->name }}</td>
                     <td>{{ $client->contact }}</td>
-                    <td>{{ $client->description }}</td>
+                    <td>{!! $client->description !!}</td>
                     <td>
                         <div class='btn-group'>
                             <a class='btn btn-sm btn-success' href='{{ route('client.show', $client->id) }}'>

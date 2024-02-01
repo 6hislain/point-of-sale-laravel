@@ -29,7 +29,7 @@
                 <tr>
                     <th scope="row">{{ $category->id }}</th>
                     <td>{{ $category->name }}</td>
-                    <td>{{ $category->description }}</td>
+                    <td>{!! $category->description !!}</td>
                     <td>
                         <div class='btn-group'>
                             <a class='btn btn-sm btn-success' href='{{ route('category.show', $category->id) }}'>

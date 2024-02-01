@@ -35,7 +35,7 @@
                     <td>{{ $transaction->quantity }}</td>
                     <td>{{ $transaction->total }}</td>
                     <td>{{ $transaction->type }}</td>
-                    <td>{{ $transaction->description }}</td>
+                    <td>{!! $transaction->description !!}</td>
                     <td>
                         <div class='btn-group'>
                             <a class='btn btn-sm btn-success' href='{{ route('transaction.show', $transaction->id) }}'>
