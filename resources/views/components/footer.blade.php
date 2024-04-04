@@ -26,6 +26,11 @@
                     <li>Facebook: @pointofsale</li>
                 </ul>
             </div>
+            <div class="col-12 text-center">
+                <hr>
+                <i class="fas fa-code me-1"></i> with <i class="fas fa-heart text-danger mx-1"></i> by
+                <a class='text-decoration-none' target='_blank' href="https://bio.link/6hislain">@6hislain</a>
+            </div>
         </div>
     </div>
 </footer>
