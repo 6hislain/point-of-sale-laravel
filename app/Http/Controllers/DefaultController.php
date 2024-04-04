@@ -13,7 +13,7 @@ class DefaultController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['home', 'about', 'contact', 'license']);
+        $this->middleware('auth')->only('dashboard');
     }
 
     public function home(): View
