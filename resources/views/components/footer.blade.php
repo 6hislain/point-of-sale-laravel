@@ -12,10 +12,12 @@
             </div>
             <div class='col-md-2'>
                 <h4>Quick links</h4>
-                <li>About Us</li>
-                <li>Contact Us</li>
-                <li>Privacy Policy</li>
-                <li>Terms & Conditions</li>
+                <ul>
+                    <li>About Us</li>
+                    <li>Contact Us</li>
+                    <li>Privacy Policy</li>
+                    <li>Terms & Conditions</li>
+                </ul>
             </div>
             <div class='col-md-3'>
                 <h4>Get in touch</h4>
