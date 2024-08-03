@@ -2,17 +2,20 @@
 
 namespace App\Models;
 
+use App\Traits\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Transaction extends Model
+class Purchase extends Model
 {
-    use HasFactory;
+    use Uuid, HasFactory;
+
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     protected $fillable = [
         'quantity',
-        'type',
         'group',
         'total',
         'expiration_date',

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Sale;
 use App\Models\Client;
 use App\Models\Product;
-use App\Models\Transaction;
+use App\Models\Category;
+use App\Models\Purchase;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -38,11 +39,12 @@ class DefaultController extends Controller
 
     public function dashboard(): View
     {
+        $sales = Sale::count();
         $clients = Client::count();
         $products = Product::count();
+        $purchases = Purchase::count();
         $categories = Category::count();
-        $transactions = Transaction::count();
 
-        return view('dashboard.index', compact(['clients', 'categories', 'products', 'transactions']));
+        return view('dashboard.index', compact(['clients', 'categories', 'products', 'sales', 'purchases']));
     }
 }

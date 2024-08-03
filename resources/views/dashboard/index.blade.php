@@ -18,8 +18,8 @@
     <div class='row'>
         <div class='col-md-3'>
             <div class='card card-body border-0 bg-success text-white shadow-sm'>
-                <h5 class='fw-normal'>TRANSACTIONS</h5>
-                <h1>{{ $transactions }} <i class="bi bi-arrow-down-up float-end"></i></h1>
+                <h5 class='fw-normal'>SALES</h5>
+                <h1>{{ $sales }} <i class="bi bi-arrow-down-up float-end"></i></h1>
                 <p class="text-white mb-0">12% from last month</p>
             </div>
         </div>

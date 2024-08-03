@@ -14,19 +14,20 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('name');
             $table->float('buying_price');
             $table->float('selling_price');
             $table->string('image')->nullable();
             $table->string('serial')->nullable();
-            $table->string('supplier')->nullable();
             $table->text('description')->nullable();
             $table->softDeletes();
             $table->timestamps();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('category_id');
+            $table->uuid('user_id');
+            $table->uuid('supplier_id');
+            $table->uuid('category_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }

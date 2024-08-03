@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTransactionsTable extends Migration
+class CreateSalesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,18 @@ class CreateTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
-            $table->id();
+        Schema::create('sales', function (Blueprint $table) {
+            $table->uuid('id')->primary();
             $table->integer('quantity');
-            $table->enum('type', ['purchase', 'sale', 'expired'])->default('sale');
             $table->integer('group')->nullable();
             $table->date('expiration_date')->nullable();
             $table->text('description')->nullable();
             $table->float('total');
             $table->softDeletes();
             $table->timestamps();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('client_id')->nullable();
-            $table->unsignedBigInteger('product_id');
+            $table->uuid('user_id');
+            $table->uuid('client_id')->nullable();
+            $table->uuid('product_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
@@ -39,6 +38,6 @@ class CreateTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('sales');
     }
 }

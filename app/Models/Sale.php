@@ -6,9 +6,8 @@ use App\Traits\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Product extends Model
+class Sale extends Model
 {
     use Uuid, HasFactory;
 
@@ -16,15 +15,18 @@ class Product extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'name',
-        'buying_price',
-        'selling_price',
-        'image',
-        'serial',
-        'supplier',
+        'quantity',
+        'group',
+        'total',
+        'expiration_date',
         'description',
         'user_id',
-        'category_id',
+        'client_id',
+        'product_id',
+    ];
+
+    protected $casts = [
+        'expiration_date' => 'date',
     ];
 
     public function user(): BelongsTo
@@ -32,18 +34,13 @@ class Product extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function category(): BelongsTo
+    public function product(): BelongsTo
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Product::class);
     }
 
-    public function sales(): HasMany
+    public function client(): BelongsTo
     {
-        return $this->hasMany(Sale::class);
-    }
-
-    public function purchases(): HasMany
-    {
-        return $this->hasMany(Purchase::class);
+        return $this->belongsTo(Client::class);
     }
 }

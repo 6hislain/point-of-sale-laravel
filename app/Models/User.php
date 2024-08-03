@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Uuid;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -11,7 +12,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use Uuid, HasApiTokens, HasFactory, Notifiable;
+
+    protected $keyType = 'string';
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
@@ -60,8 +64,13 @@ class User extends Authenticatable
         return $this->hasMany(Client::class);
     }
 
-    public function Transactions(): HasMany
+    public function Sales(): HasMany
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasMany(Sale::class);
+    }
+
+    public function Purchases(): HasMany
+    {
+        return $this->hasMany(Purchase::class);
     }
 }
